@@ -9,6 +9,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .container-articles {
   margin: 0 auto;
   display: grid;
