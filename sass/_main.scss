@@ -1,0 +1,21 @@
+main {
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        opacity: 0.8;
+    }
+
+    p {
+        color: #F3E8F0;
+        text-shadow: 2px 5px 10px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        text-align: center;
+        bottom: 247px;
+        left: 2px;
+        font-size: 52px;
+        font-family: "Playfair Display", "helvetica", "sans serif";
+    }
+}
