@@ -1,55 +1,59 @@
-let products = [];
-
 function appelAPI() {
-    fetch(`http://localhost:3000/api/cameras`)
-
+    fetch(`http://localhost:3000/api/cameras`, {
+        method: 'GET'
+    })
     // je prends une reponse et je la convertis en json
     .then((response) => {
-        return response.json(); 
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw Error("Error");
+        }
     })
 
     // je sélectionne la donnée sur l'API du navigateur
     .then((data) => {  
-    // console.log(products[0][0].name);
         console.log(data);
-        products.push(data)
 
     // je créé une boucle qui va itérer les données que je souhaite intégrer dans le html
-        for(let i = 0; i < products.length ; i++) {
+        for(let i = 0; i < data.length ; i++) {
             const divOne = document.querySelector(".container-articles");
 
             const divTwo = document.createElement("div");
-            divTwo.className = "article";
+            divTwo.setAttribute("class", "article");
+            divOne.appendChild(divTwo);
 
             const img = document.createElement("img");
             divTwo.appendChild(img);
             img.setAttribute("src", `./images/vcam_${i + 1}.jpg`);
-            
+    
             const divThree = document.createElement("div");
-            divThree.className = "article-flex-name-price";
-
-            divOne.appendChild(divTwo);
+            divThree.setAttribute("class", "article-flex-name-price");
             divTwo.appendChild(divThree);
 
             const title = document.createElement("h3");
-            title.className = "name-article";
-            title[i].innerHTML = products[0][i].name;
+            title.setAttribute("class", "name-article");
             divThree.appendChild(title);
-
+            const titleArticle = document.querySelectorAll(".name-article")
+            titleArticle[i].innerHTML = data[i].name;
+            
             const price = document.createElement("p");
-            price.className = "price-article";
-            price[i].innerHTML = `${products[0][i].price} €`;
+            price.setAttribute("class", "price-article");
             divThree.appendChild(price);
-
+            const priceArticle = document.querySelectorAll(".price-article")
+            priceArticle[i].innerHTML = `${data[i].price} €`;
+            
             const description = document.createElement("p");
-            description.className = "description-article";
-            description[i].innerHTML = products[0][i].description;
+            description.setAttribute("class", "description-article");
             divTwo.appendChild(description);
+            const descriptionArticle = document.querySelectorAll(".description-article")
+            descriptionArticle[i].innerHTML = data[i].description;
+            
         };
-    })
+    }) 
     .catch ( error => {
         console.log(error);
-    })
+    }) 
 }
-appelAPI();
 
+appelAPI();
