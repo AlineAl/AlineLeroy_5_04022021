@@ -19,10 +19,14 @@ function appelAPI() {
         for(let i = 0; i < data.length ; i++) {
             const divOne = document.querySelector(".container-articles");
 
+            const link = document.createElement("a");
+            link.setAttribute("href", "./product.html")
+            divOne.appendChild(link);
+            
             const divTwo = document.createElement("div");
             divTwo.setAttribute("class", "article");
-            divOne.appendChild(divTwo);
-
+            link.appendChild(divTwo);
+            
             const img = document.createElement("img");
             divTwo.appendChild(img);
             img.setAttribute("src", `./images/vcam_${i + 1}.jpg`);

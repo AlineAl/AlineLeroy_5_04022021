@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/1a41b34319.js" crossorigin="anonymous"></script>
     <!-- css -->
@@ -17,19 +16,23 @@
         <p><i class="fas fa-shopping-basket basket"></i></p>
     </nav>
 
-    <main>
-        <img src="./images/dariusz-sankowski-3OiYMgDKJ6k-unsplash.jpg" alt="">
-        <p>Découvrez de nouveaux horizons avec nos caméras vintages !</p>
-    </main>
+    <div class="container-produit">
+        <img src="./images/vcam_1.jpg" alt="#">
+        <a href="#"><i class="fas fa-plus"></i></a>
+        <h2>Zurss 50S</h2>
+        <select class="dropdown" name="products" id="products">
+            <option value="35mm">35mm 1.4</option>
+            <option value="50mm">50mm 1.6</option>
+        </select>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p id="bold-price">49900 €</p>
+    </div>
 
-    <div class="container-articles"></div>
-    
     <footer>
         <p><i class="fab fa-instagram"></i></p>
         <p><i class="fab fa-facebook-square"></i></p>
         <p><i class="fab fa-twitter-square"></i></p>
     </footer>
-
-<script type="module" src="./javascript/main.js"></script>
+    <script type="module" src="./javascript/product.js"></script>
 </body>
 </html>
