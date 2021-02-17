@@ -58,9 +58,9 @@
     margin-top: 30px;
     padding-bottom: 30px;
     border-radius: 20px;
+    position: relative;
     width: 60%;
     height: auto;
-    position: relative;
 
     a {
         position: absolute;
@@ -82,7 +82,6 @@
     }
 
     h2 {
-        text-align: center;
         font-size: 28px;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -101,13 +100,22 @@
     color:black;
 }
 
+.flex-title-dropdown {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 30px;
+    align-items: center;
+}
+
+
 .dropdown {
-    text-align: center;
-    border: none;
-    font-size: 16px;
+    margin-top: 10px;
+    font-size: 20px;
     outline: none;
+    margin-bottom: 16px;
 
     &:hover {
-        color: #F3E8F0;
+        border: 1px solid #F3E8F0;
     }
 }
