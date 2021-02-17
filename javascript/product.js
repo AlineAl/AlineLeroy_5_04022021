@@ -1,7 +1,7 @@
 // je veux afficher le produit de l'id selectionné
 const link = window.location.search;
-const params = new URLSearchParams(link)
-const id = params.get('id')
+const params = new URLSearchParams(link);
+const id = params.get('id');
 // console.log(id)
 
 // je veux les infos liées à cet id
