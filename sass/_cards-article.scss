@@ -1,5 +1,4 @@
 // CARDS INDEX  
-
 .container-articles {
     margin: 0 auto;
     display: grid;
@@ -39,8 +38,6 @@
     }
 }
 
-
-
 .price-article {
     font-weight: bold;
 }
@@ -71,6 +68,10 @@
         font-size: 32px;
         top: 20px;
         right: 20px;
+
+        &:hover {
+            color: black;
+        }
     }
 
     img {
@@ -101,8 +102,7 @@
 }
 
 .dropdown {
-    margin-left: 255px;
-    margin-bottom: 16px;
+    text-align: center;
     border: none;
     font-size: 16px;
     outline: none;

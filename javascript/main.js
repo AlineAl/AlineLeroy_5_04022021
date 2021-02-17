@@ -20,13 +20,14 @@ function appelAPI() {
             const divOne = document.querySelector(".container-articles");
 
             const link = document.createElement("a");
-            link.setAttribute("href", "./product.html")
-            divOne.appendChild(link);
+            link.setAttribute("href", `./product.html?id=${data[i]._id}`)
+            divOne.appendChild(link)
             
             const divTwo = document.createElement("div");
             divTwo.setAttribute("class", "article");
+            divOne.appendChild(divTwo);
             link.appendChild(divTwo);
-            
+
             const img = document.createElement("img");
             divTwo.appendChild(img);
             img.setAttribute("src", `./images/vcam_${i + 1}.jpg`);
@@ -51,8 +52,7 @@ function appelAPI() {
             description.setAttribute("class", "description-article");
             divTwo.appendChild(description);
             const descriptionArticle = document.querySelectorAll(".description-article")
-            descriptionArticle[i].innerHTML = data[i].description;
-            
+            descriptionArticle[i].innerHTML = data[i].description;  
         };
     }) 
     .catch ( error => {
