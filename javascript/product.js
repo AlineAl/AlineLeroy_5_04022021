@@ -43,6 +43,16 @@ function displayOwnProduct() {
             }
         }
         displayInfoProduct(data);
+
+        function addProductInBasket() {
+            const basket = document.querySelector(".add-product")
+            basket.addEventListener('click', (e) => {
+                e.preventDefault(); 
+
+                
+            })
+        }
+        addProductInBasket();
         
     })
     .catch(error => {
