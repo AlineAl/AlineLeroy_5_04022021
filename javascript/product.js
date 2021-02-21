@@ -18,6 +18,7 @@ function displayOwnProduct() {
     .then((data) => {
         // console.log(data[0].lenses[1]);
 
+        // je prends les données de l'id
         function displayInfoProduct(data) {
             const div = document.querySelector(".container-produit")
 
@@ -44,15 +45,58 @@ function displayOwnProduct() {
         }
         displayInfoProduct(data);
 
+        // j'ajoute un événement au click de l'utilisateur
+
         function addProductInBasket() {
-            const basket = document.querySelector(".add-product")
-            basket.addEventListener('click', (e) => {
+            let addProduct = document.querySelector(".add-product");
+            
+            addProduct.addEventListener('click', (e) => {
                 e.preventDefault(); 
 
-                
+                cardProductsStorage()
             })
         }
         addProductInBasket();
+
+        // ajout des articles dans le panier avec localStorage
+        function cardProductsStorage() {
+            let productsStorage = localStorage.getItem('article');
+            // console.log(productsStorage);
+            // console.log(typeof(productsStorage));
+
+            productsStorage = parseInt(productsStorage);
+            // console.log(typeof(productsStorage));
+            
+            if (productsStorage) {
+                localStorage.setItem('article', productsStorage + 1);
+                let div = document.querySelector(".basket-products");
+
+                let pRounded = document.createElement("p");
+                pRounded.setAttribute("class", "number-products-basket");
+                let p = document.createElement("p");
+                p.setAttribute("class", "number");
+                p.innerText = productsStorage += 1;
+
+                div.appendChild(pRounded);
+                div.appendChild(p);
+
+            } else {
+                localStorage.setItem('article', 1);
+                let div = document.querySelector(".basket-products");
+
+                let pRounded = document.createElement("p");
+                pRounded.setAttribute("class", "number-products-basket");
+                let p = document.createElement("p");
+                p.setAttribute("class", "number");
+
+                div.appendChild(pRounded);
+                div.appendChild(p);
+
+                document.querySelector(".number").innerText = 1;
+            }
+        }
+
+        // je veux que le nombre d'articles ne soit pas réinitialisé à chaque démarrage de la page
         
     })
     .catch(error => {

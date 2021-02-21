@@ -1,21 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/1a41b34319.js" crossorigin="anonymous"></script>
+    <!-- css -->
     <link rel="stylesheet" href="style.css">
     <title>Oricamera</title>
 </head>
 <body>
     <nav>
         <img src="./images/orinoco.png" alt="">
-        <p><i class="fas fa-shopping-basket basket"></i></p>
+        <a alt="#" href="basket.html"><i class="fas fa-shopping-basket basket"></i></a>
     </nav>
 
+    <h2>Récapitulatif de mon panier</h2>
     <div class="container-basket">
+        <div class="article-panier">
+            <img src="./images/vcam_1.jpg" alt="#">
+            <div>
+                <h3>Blabla</h3>
+                <p>jdjjjdjjjjd</p>
+                <p id="bold-price">56776446 €</p>
+                <select class="dropdown-basket" name="products" id="products">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
 
-    </div>
+        <div class="card-total-basket">
+            <div class="recapitulatif-produit">
+               <p id="font-playfair">Produits</p>
+               <p id="bold-price">56776446 €</p> 
+            </div>
+            <div class="total-price">
+                <p id="font-playfair">Total</p>
+                <p id="bold-price">56776446 €</p>
+            </div>
+            <p class="button"><button type="submit">Valider ma commande</button></p>
+        </div>
+    </div> 
+
+    
 
     <footer>
         <p><i class="fab fa-instagram"></i></p>

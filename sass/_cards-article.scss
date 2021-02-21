@@ -119,3 +119,113 @@
         border: 1px solid #F3E8F0;
     }
 }
+
+// CARDS BASKET 
+
+h2 {
+    font-family: "Playfair Display", "helvetica", "sans serif";
+    text-align: center;
+    margin-top: 8px;
+}
+
+.container-basket {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.article-panier {
+    display: flex;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    margin-left: 16px;
+    height: 150px;
+    position: relative;
+    border-radius: 16px;
+
+    img {
+        object-fit: cover;
+        width: 150px;
+        height: 150px;
+        border-radius: 16px 0px 0px 16px;
+    }
+
+    h3 {
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-left: 10px;
+        margin-bottom: 10px;
+        color: lightgrey;
+    }
+
+    .dropdown-basket {
+        margin-left: 10px;
+        outline: none;
+
+        &:hover {
+            border: 1px solid #F3E8F0;
+        }
+    }
+}
+
+
+
+.card-total-basket {
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    margin-top: 30px;
+    margin-left: 16px;
+    margin-right: 16px;
+    position: relative;
+}
+
+.recapitulatif-produit {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-top: 16px;
+        font-size: 22px;
+    }
+}
+
+.total-price {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    border-top: 1px solid #333;
+    margin-left: 16px;
+    margin-right: 16px;
+
+    p {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 16px;
+        font-size: 22px;
+    }
+}
+
+.button {
+    text-align: center;
+    margin-top: 22px;
+    margin-bottom: 22px;
+}
+
+button {
+    padding: 16px;
+    border-radius: 26px;
+    border: 1px solid #FFFFFF;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(90deg, rgba(252,176,69,1) 0%, rgba(131,58,180,1) 100%);;
+}
+
+#font-playfair {
+    font-family: "Playfair Display", "helvetica", "sans serif";
+}
