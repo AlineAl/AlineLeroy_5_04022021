@@ -53,13 +53,14 @@ function displayOwnProduct() {
             addProduct.addEventListener('click', (e) => {
                 e.preventDefault(); 
 
-                cardProductsStorage()
+                cardProductsStorage(data)
             })
         }
         addProductInBasket();
 
         // ajout des articles dans le panier avec localStorage
-        function cardProductsStorage() {
+        function cardProductsStorage(data) {
+            // console.log(data);
             let productsStorage = localStorage.getItem('article');
             // console.log(productsStorage);
             // console.log(typeof(productsStorage));
@@ -94,6 +95,18 @@ function displayOwnProduct() {
 
                 document.querySelector(".number").innerText = 1;
             }
+
+            setItems(data);
+        }
+
+        function setItems(data) {
+            let productItems = localStorage.getItem("addProductInBasket");
+            productItems = JSON.parse(productItems);
+            productItems = {
+                [data.name]: data
+            }
+            localStorage.setItem("addProductsInBasket", JSON.stringify(productItems));
+
         }
 
         // je veux que le nombre d'articles ne soit pas réinitialisé à chaque démarrage de la page

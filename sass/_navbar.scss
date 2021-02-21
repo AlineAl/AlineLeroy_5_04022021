@@ -29,10 +29,9 @@ nav {
 
 .number-products-basket {
     border-radius: 50%;
-    background-color: #c12152;
-    width: 22px;
-    height: 22px;
-    font-size: 16px;
+    background: linear-gradient(90deg, rgba(252,176,69,1) 0%, rgba(131,58,180,1) 100%);;
+    padding: 11px;
+    font-size: 14px;
     position: absolute;
     top: 40px;
     right: 5px;
@@ -40,8 +39,8 @@ nav {
 
 .number {
     position: absolute;
-    top: 42px;
-    right: 9px;
+    top: 43px;
+    right: 10px;
     font-size: 14px;
     font-weight: bold;
     color: white;
