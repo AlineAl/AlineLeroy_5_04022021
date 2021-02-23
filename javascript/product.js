@@ -2,6 +2,7 @@
 const link = window.location.search;
 const params = new URLSearchParams(link);
 const id = params.get('id');
+
 // console.log(id)
 
 // je veux les infos liées à cet id
@@ -51,9 +52,9 @@ function displayOwnProduct() {
             let addProduct = document.querySelector(".add-product");
             
             addProduct.addEventListener('click', (e) => {
-                e.preventDefault(); 
+                e.preventDefault();
 
-                cardProductsStorage(data)
+                cardProductsStorage(data);
             })
         }
         addProductInBasket();
@@ -100,17 +101,22 @@ function displayOwnProduct() {
         }
 
         function setItems(data) {
-            let productItems = localStorage.getItem("addProductInBasket");
+            let products = [];
+            let productItems = localStorage.getItem("addProductsInBasket");
             productItems = JSON.parse(productItems);
             productItems = {
                 [data.name]: data
             }
-            localStorage.setItem("addProductsInBasket", JSON.stringify(productItems));
 
+            if (productItems === null) {
+                products = [];
+            } else {
+                localStorage.setItem("addProductsInBasket", JSON.stringify(productItems));
+                products.push(productItems);
+                console.log(products);
+            } 
         }
-
-        // je veux que le nombre d'articles ne soit pas réinitialisé à chaque démarrage de la page
-        
+        // je veux que le nombre d'articles ne soit pas réinitialisé à chaque démarrage de la page  
     })
     .catch(error => {
         console.log(error);
@@ -118,3 +124,5 @@ function displayOwnProduct() {
 }
 
 displayOwnProduct();
+
+
