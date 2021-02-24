@@ -39,7 +39,7 @@ function displayProductsBasket() {
                 pPrice.setAttribute("id", "bold-price");
                 divThree.appendChild(pPrice);
                 const price = document.querySelector("#bold-price");
-                price.innerText = `${data.price} €`;
+                price.innerText = `${data.price / 100} €`;
         
                 const select = document.createElement("select");
                 select.setAttribute("class", "dropdown-basket");

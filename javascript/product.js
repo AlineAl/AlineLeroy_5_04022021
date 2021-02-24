@@ -1,3 +1,5 @@
+// variable local storage, [ "nom" : {info + qte}, "nom" : {info+ qte} ], passer par une liste avec quantité
+
 // je veux afficher le produit de l'id selectionné
 const link = window.location.search;
 const params = new URLSearchParams(link);
@@ -34,7 +36,7 @@ function displayOwnProduct() {
             description.innerText = data.description;
 
             const price = document.querySelector("#bold-price");
-            price.innerText = `${data.price} €`;
+            price.innerText = `${parseFloat(data.price) / 100} €`;
 
             for(let i = 0; i < data.lenses.length; i++) {
                 const select = document.querySelector("select");
@@ -50,7 +52,22 @@ function displayOwnProduct() {
 
         function addProductInBasket() {
             let addProduct = document.querySelector(".add-product");
-            
+
+            let productsStorage = localStorage.getItem('article');
+
+            if(productsStorage) {
+                let div = document.querySelector(".basket-products");
+
+                let pRounded = document.createElement("p");
+                pRounded.setAttribute("class", "number-products-basket");
+                let p = document.createElement("p");
+                p.setAttribute("class", "number");
+                p.innerText = productsStorage;
+
+                div.appendChild(pRounded);
+                div.appendChild(p); 
+            }
+        
             addProduct.addEventListener('click', (e) => {
                 e.preventDefault();
 
@@ -70,18 +87,17 @@ function displayOwnProduct() {
             // console.log(typeof(productsStorage));
             
             if (productsStorage) {
-                localStorage.setItem('article', productsStorage + 1);
-                let div = document.querySelector(".basket-products");
+                   localStorage.setItem('article', productsStorage + 1); 
+                    let div = document.querySelector(".basket-products");
 
-                let pRounded = document.createElement("p");
-                pRounded.setAttribute("class", "number-products-basket");
-                let p = document.createElement("p");
-                p.setAttribute("class", "number");
-                p.innerText = productsStorage += 1;
+                    let pRounded = document.createElement("p");
+                    pRounded.setAttribute("class", "number-products-basket");
+                    let p = document.createElement("p");
+                    p.setAttribute("class", "number");
+                    p.innerText = productsStorage + 1;
 
-                div.appendChild(pRounded);
-                div.appendChild(p);
-
+                    div.appendChild(pRounded);
+                    div.appendChild(p); 
             } else {
                 localStorage.setItem('article', 1);
                 let div = document.querySelector(".basket-products");
@@ -104,17 +120,22 @@ function displayOwnProduct() {
             let products = [];
             let productItems = localStorage.getItem("addProductsInBasket");
             productItems = JSON.parse(productItems);
-            productItems = {
-                [data.name]: data
+
+            if(productItems != null) {
+                productItems += 1;
+                productItems = {
+                    [data.name]: data
+                }
+                
+            } else {
+                productItems = {
+                    [data.name]: data
+                }
             }
 
-            if (productItems === null) {
-                products = [];
-            } else {
-                localStorage.setItem("addProductsInBasket", JSON.stringify(productItems));
-                products.push(productItems);
-                console.log(products);
-            } 
+            localStorage.setItem("addProductsInBasket", JSON.stringify(productItems));
+            products.push(productItems);
+            console.log(products);
         }
         // je veux que le nombre d'articles ne soit pas réinitialisé à chaque démarrage de la page  
     })

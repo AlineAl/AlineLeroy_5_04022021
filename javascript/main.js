@@ -46,7 +46,7 @@ function appelAPI() {
             price.setAttribute("class", "price-article");
             divThree.appendChild(price);
             const priceArticle = document.querySelectorAll(".price-article")
-            priceArticle[i].innerHTML = `${data[i].price} €`;
+            priceArticle[i].innerHTML = `${data[i].price / 100} €`;
             
             const description = document.createElement("p");
             description.setAttribute("class", "description-article");
