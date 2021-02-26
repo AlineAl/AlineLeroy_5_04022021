@@ -19,7 +19,7 @@ function displayProductsBasket() {
                 divOne.prepend(divTwo);
         
                 const img = document.createElement("img");
-                img.setAttribute("src", `${data.imageUrl}`);
+                img.setAttribute("src", `${data.object.imageUrl}`);
                 divTwo.appendChild(img);
         
                 const divThree = document.createElement("div");
@@ -28,18 +28,18 @@ function displayProductsBasket() {
                 const h3 = document.createElement("h3");
                 divThree.appendChild(h3);
                 const name = document.querySelector("h3");
-                name.innerText = data.name;
+                name.innerText = data.object.name;
         
                 const pDescription = document.createElement("p");
                 divThree.appendChild(pDescription);
                 const description = document.querySelector("p");
-                description.innerText = data.description;
+                description.innerText = data.object.description;
         
                 const pPrice = document.createElement("p");
                 pPrice.setAttribute("id", "bold-price");
                 divThree.appendChild(pPrice);
                 const price = document.querySelector("#bold-price");
-                price.innerText = `${data.price / 100} €`;
+                price.innerText = `${data.object.price / 100} €`;
         
                 const select = document.createElement("select");
                 select.setAttribute("class", "dropdown-basket");

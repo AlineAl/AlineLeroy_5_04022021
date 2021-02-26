@@ -117,25 +117,32 @@ function displayOwnProduct() {
         }
 
         function setItems(data) {
-            let products = [];
+            // je récupère les données dans le local storage
             let productItems = localStorage.getItem("addProductsInBasket");
+            // je parse pour afficher les données
             productItems = JSON.parse(productItems);
-
-            if(productItems != null) {
-                productItems += 1;
-                productItems = {
-                    [data.name]: data
+            // je défini mon objet avec les infos + quantité
+            // console.log(productItems)
+            let productsdata = {
+                    object: data,
+                    quantity: 1
                 }
-                
+            // condition si j'ai un élément dans le local storage
+            // j'incrémente la quantité au click
+            // je push l'objet dans la variable et je la set, et stringify pour définir ce que je veux avoir dans le tableau, ici les productItems
+            // si non, je définis un array vide
+            // je push l'objet dans le tableau, je set et stringify pour définir ce que je veux avoir dans le tableau, ici les products
+            if(productItems) {
+                productItems.push(productsdata);
+                localStorage.setItem("addProductsInBasket", JSON.stringify(productItems));
             } else {
-                productItems = {
-                    [data.name]: data
-                }
+                let products = [];
+                productsdata.quantity += 1;
+                products.push(productsdata);
+                localStorage.setItem("addProductsInBasket", JSON.stringify(products));
+                
             }
-
-            localStorage.setItem("addProductsInBasket", JSON.stringify(productItems));
-            products.push(productItems);
-            console.log(products);
+            console.log(productItems);
         }
         // je veux que le nombre d'articles ne soit pas réinitialisé à chaque démarrage de la page  
     })
