@@ -134,41 +134,47 @@ h2 {
 
 .container-basket {
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
 }
 
 .article-panier {
     display: flex;
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 30px;
-    margin-left: 16px;
-    height: 150px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    margin-top: 22px;
+    margin-bottom: 22px;
+    width: 60%;
+    height: 100px;
     position: relative;
-    border-radius: 16px;
 
     img {
         object-fit: cover;
-        width: 150px;
-        height: 150px;
-        border-radius: 16px 0px 0px 16px;
+        width: 96px;
+        height: 96px;
+    }
+
+    i {
+        font-size: 24px;
+
+        &:hover {
+            color: #F3E8F0;
+        }
     }
 
     h3 {
         margin-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-right: 2px;
+        font-size: 14px;
     }
 
     p {
-        margin-left: 10px;
-        margin-bottom: 10px;
-        font-size: 14px;
+        font-size: 10px;
         color: lightgrey;
     }
 
     .dropdown-basket {
-        margin-left: 10px;
         outline: none;
 
         &:hover {
@@ -177,14 +183,22 @@ h2 {
     }
 }
 
+#bold-price-basket {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
 
+.number-input {
+    width: 30px;
+    height: 22px;
+}
 
 .card-total-basket {
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 16px;
-    margin-top: 30px;
-    margin-left: 16px;
-    margin-right: 16px;
+    width: 60%;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -214,21 +228,6 @@ h2 {
         margin-top: 16px;
         font-size: 22px;
     }
-}
-
-.button {
-    text-align: center;
-    margin-top: 22px;
-    margin-bottom: 22px;
-}
-
-button {
-    padding: 16px;
-    border-radius: 26px;
-    border: 1px solid #FFFFFF;
-    color: white;
-    font-weight: bold;
-    background: linear-gradient(90deg, rgba(252,176,69,1) 0%, rgba(131,58,180,1) 100%);
 }
 
 #font-playfair {
