@@ -81,47 +81,19 @@ function totalPrice() {
 totalPrice()
 
 function removeProducts(id) {
-    const remove = document.querySelector(".remove-product");
-    remove.addEventListener('click', (e) => {
-        e.preventDefault();
+    let productsStorage = localStorage.getItem('article');
+    productsStorage = parseInt(productsStorage);
+    products.forEach((product, i) => {
+        const remove = document.querySelector(".remove-product");
+        remove.addEventListener('click', () => {
 
-        products = products[0];
-        for(let i = 0; i < products.length; i++){
-            if(products[i] === localStorage[i]) {
-                localStorage[i].removeItem("addProductsInBasket", products)   
-            }    
-        } 
-        console.log(products) 
+            if(id === product._id) {
+                products.splice(i, 1);
+            }
+            localStorage.setItem("addProductsInBasket", JSON.stringify(products));
+        });
+        // localStorage.setItem("article", JSON.stringify(productsStorage - 1));
     })
+    console.log(products)
 }
-// removeProducts()
-
-function displayForm() {
-    const button = document.querySelector("button");
-
-    button.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        const divOne = document.querySelector(".container-basket");
-
-        divOne.innerHTML = `
-        <form action="" method="post">
-            <label for="firstname">firstname:</label>
-            <input id="firstname" name="firstname" type="text">
-            <label for="lastname">lastname:</label>
-            <input id="lastname" name="lastname" type="text">
-            <label for="address">address:</label>
-            <input id="address" name="address" type="text">
-            <label for="city">city:</label>
-            <input id="city" name="city" type="text">
-            <label for="email">email:</label>
-            <input id="email" name="email" type="text">
-            <input type="submit" value="Valider ma commande"
-        </form>
-        `
-    })
-}
-displayForm()
-
-
-
+removeProducts()
