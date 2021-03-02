@@ -80,20 +80,24 @@ function totalPrice() {
 }
 totalPrice()
 
-function removeProducts(id) {
+function removeProducts(value) {
     let productsStorage = localStorage.getItem('article');
     productsStorage = parseInt(productsStorage);
-    products.forEach((product, i) => {
-        const remove = document.querySelector(".remove-product");
-        remove.addEventListener('click', () => {
 
-            if(id === product._id) {
-                products.splice(i, 1);
-            }
-            localStorage.setItem("addProductsInBasket", JSON.stringify(products));
-        });
-        // localStorage.setItem("article", JSON.stringify(productsStorage - 1));
-    })
+    const remove = document.querySelector(".remove-product");
+    
+    remove.addEventListener('click', () => {
+        const index = products.indexOf(value);
+
+        if(products[index] === localStorage[index]) {
+            products.splice(index, 1);
+            localStorage.setItem("article", JSON.stringify(productsStorage - 1));
+            document.location.reload();
+        }
+
+        localStorage.setItem("addProductsInBasket", JSON.stringify(products));
+    });
+       
     console.log(products)
 }
 removeProducts()
