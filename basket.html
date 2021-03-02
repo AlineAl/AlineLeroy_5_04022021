@@ -16,44 +16,64 @@
         <a alt="#" href="basket.html"><i class="fas fa-shopping-basket basket"></i></a>
     </nav>
 
-    <h2>Récapitulatif de mon panier</h2>
     <div class="container-basket">
-        <!-- <div class="article-panier">
-            <img src="./images/vcam_1.jpg" alt="#">
-            <div>
-                <h3>Blabla</h3>
-                <p>jdjjjdjjjjd</p>
-                <p id="bold-price">56776446 €</p>
-                <select class="dropdown-basket" name="products" id="products">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div> 
-        </div> -->
-
-        <div class="card-total-basket">
-            <div class="recapitulatif-produit">
-               <p id="font-playfair">Produits</p>
-               <p id="bold-price">56776446 €</p> 
+        <div class="flex-products-form">
+            <div class="div-products">
+               <div class="card-total-basket">
+                <div class="recapitulatif-produit">
+                   <p id="font-playfair">Products</p>
+                   <p id="bold-price" class="total-product"></p> 
+                </div>
+                <div class="total-price">
+                    <p id="font-playfair">Total</p>
+                    <p id="bold-price" class="total-card"></p>
+                </div>
             </div>
-            <div class="total-price">
-                <p id="font-playfair">Total</p>
-                <p id="bold-price">56776446 €</p>
             </div>
-            <p class="button"><button type="submit">Valider ma commande</button></p>
+            <div class="form-login">
+                <form method="post" id="myForm">
+                    <div class="form-user">
+                        <label for="firstname">Firstname:</label>
+                        <input id="firstname" name="firstname" type="text" placeholder="Your firstname" maxlength="24">
+                        <img src="" alt="check-icon" class="check-icon-img">
+                        <span class="alerte-message">Choose a name between 3 and 24 characters</span>
+                    </div>
+                    <div class="form-user">
+                        <label for="lastname">Lastname:</label>
+                        <input id="lastname" name="lastname" type="text" placeholder="Your lastname">
+                        <img src="" alt="check-icon" class="check-icon-img">
+                        <span class="alerte-message">Choose a name between 3 and 24 characters</span>
+                    </div>
+                    <div class="form-user">
+                        <label for="address">Address:</label>
+                        <input id="address" name="address" type="text" placeholder="Your address">
+                        <img src="" alt="check-icon" class="check-icon-img">
+                        <span class="alerte-message">Enter a valid address</span>
+                    </div>
+                    <div class="form-user">
+                        <label for="city">City:</label>
+                        <input id="city" name="city" type="text" placeholder="Your city">
+                        <img src="" alt="check-icon" class="check-icon-img">
+                        <span class="alerte-message">Enter a valid city</span>
+                    </div>
+                    <div class="form-user">
+                        <label for="email">Email:</label>
+                        <input id="email" name="email" type="text" placeholder="Your email">
+                        <img src="" alt="check-icon" class="check-icon-img">
+                        <span class="alerte-message">Enter a valid email</span>
+                    </div>
+                    <input class="button" name="myForm" type="submit" value="Valider ma commande">
+                </form>
+            </div>
         </div>
     </div> 
-
-    
 
     <footer>
         <p><i class="fab fa-instagram"></i></p>
         <p><i class="fab fa-facebook-square"></i></p>
         <p><i class="fab fa-twitter-square"></i></p>
     </footer>
+    <script type="module" src="./javascript/form.js"></script>
     <script type="module" src="./javascript/basket.js"></script>
 </body>
 </html>

@@ -1,16 +1,15 @@
 // je veux faire apparaître les articles dans le panier
+let products = [];
+let productItems = localStorage.getItem("addProductsInBasket");
+productItems = JSON.parse(productItems);
+products.push(productItems);
 
 function displayProductsBasket() {
-    let products = [];
-    let productItems = localStorage.getItem("addProductsInBasket");
-    productItems = JSON.parse(localStorage.getItem("addProductsInBasket"));
-
-    const divOne = document.querySelector(".container-basket");
+    const divOne = document.querySelector(".div-products");
     // console.log(products);
 
     if (productItems) {
-        products.push(productItems);
-        console.log(products)
+        // console.log(products)
         products.forEach(product => {
             product = Object.values(productItems);
             product.map(data => {
@@ -21,34 +20,80 @@ function displayProductsBasket() {
                 const img = document.createElement("img");
                 img.setAttribute("src", `${data.object.imageUrl}`);
                 divTwo.appendChild(img);
-        
-                const divThree = document.createElement("div");
-                divTwo.appendChild(divThree);
-        
+
                 const h3 = document.createElement("h3");
-                divThree.appendChild(h3);
+                divTwo.appendChild(h3);
                 const name = document.querySelector("h3");
                 name.innerText = data.object.name;
-        
-                const pDescription = document.createElement("p");
-                divThree.appendChild(pDescription);
-                const description = document.querySelector("p");
-                description.innerText = data.object.description;
-        
+
+                const selectRecap = document.createElement("select");
+                selectRecap.setAttribute("class", "dropdown-recap recap");
+                selectRecap.setAttribute("name", "products");
+                selectRecap.setAttribute("id", "products")
+                divTwo.appendChild(selectRecap);
+
+                for(let i = 0; i < data.object.lenses.length; i++) {
+                    const selectOption = document.querySelector(".recap");
+                    
+                    const option = document.createElement("option");
+                    option.innerText = data.object.lenses[i];
+                    selectOption.appendChild(option);
+                }
+
                 const pPrice = document.createElement("p");
-                pPrice.setAttribute("id", "bold-price");
-                divThree.appendChild(pPrice);
-                const price = document.querySelector("#bold-price");
+                pPrice.setAttribute("id", "bold-price-basket");
+                divTwo.appendChild(pPrice);
+                const price = document.querySelector("#bold-price-basket");
                 price.innerText = `${data.object.price / 100} €`;
-        
-                const select = document.createElement("select");
-                select.setAttribute("class", "dropdown-basket");
-                select.setAttribute("name", "products");
-                select.setAttribute("id", "products");
-                divThree.appendChild(select);
+
+                /* const inputNumber = document.createElement("input");
+                inputNumber.setAttribute("class", "number-input");
+                inputNumber.setAttribute("type", "number");
+                inputNumber.setAttribute("min", "1");
+                divTwo.appendChild(inputNumber); */
+
+                const remove = document.createElement("i");
+                remove.setAttribute("class","fas fa-trash-alt remove-product");
+                divTwo.appendChild(remove);
             });
         }) 
     };
 }
 
 displayProductsBasket()
+
+function totalPrice() {
+    let total = 0;
+    products = products[0];
+    for(let i = 0; i < products.length; i++){
+        let price = products[i].object.price / 100;
+        total += price * products[i].quantity;
+    }
+
+    const cardTotal = document.querySelector(".total-card");
+    cardTotal.innerText = `${total} €`;
+    // console.log(total)
+
+    const cardProduct = document.querySelector(".total-product");
+    cardProduct.innerText = products.length;
+    // console.log(products.length)
+}
+totalPrice()
+
+function removeProducts(id) {
+    let productsStorage = localStorage.getItem('article');
+    productsStorage = parseInt(productsStorage);
+    products.forEach((product, i) => {
+        const remove = document.querySelector(".remove-product");
+        remove.addEventListener('click', () => {
+
+            if(id === product._id) {
+                products.splice(i, 1);
+            }
+            localStorage.setItem("addProductsInBasket", JSON.stringify(products));
+        });
+        // localStorage.setItem("article", JSON.stringify(productsStorage - 1));
+    })
+    console.log(products)
+}
+removeProducts()

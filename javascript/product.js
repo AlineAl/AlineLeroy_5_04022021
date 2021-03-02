@@ -121,6 +121,7 @@ function displayOwnProduct() {
             let productItems = localStorage.getItem("addProductsInBasket");
             // je parse pour afficher les données
             productItems = JSON.parse(productItems);
+            console.log(productItems);
             // je défini mon objet avec les infos + quantité
             // console.log(productItems)
             let productsdata = {
@@ -137,12 +138,9 @@ function displayOwnProduct() {
                 localStorage.setItem("addProductsInBasket", JSON.stringify(productItems));
             } else {
                 let products = [];
-                productsdata.quantity += 1;
                 products.push(productsdata);
-                localStorage.setItem("addProductsInBasket", JSON.stringify(products));
-                
+                localStorage.setItem("addProductsInBasket", JSON.stringify(products));  
             }
-            console.log(productItems);
         }
         // je veux que le nombre d'articles ne soit pas réinitialisé à chaque démarrage de la page  
     })
