@@ -5,7 +5,7 @@ productItems = JSON.parse(productItems);
 products.push(productItems);
 
 function displayProductsBasket() {
-    const divOne = document.querySelector(".container-basket");
+    const divOne = document.querySelector(".div-products");
     // console.log(products);
 
     if (productItems) {
@@ -27,7 +27,7 @@ function displayProductsBasket() {
                 name.innerText = data.object.name;
 
                 const selectRecap = document.createElement("select");
-                selectRecap.setAttribute("class", "dropdown recap");
+                selectRecap.setAttribute("class", "dropdown-recap recap");
                 selectRecap.setAttribute("name", "products");
                 selectRecap.setAttribute("id", "products")
                 divTwo.appendChild(selectRecap);
