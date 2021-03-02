@@ -309,9 +309,6 @@ footer p {
 .button {
   text-align: center;
   margin-top: 22px;
-}
-
-button {
   margin-bottom: 22px;
   padding: 16px;
   border-radius: 26px;
@@ -321,7 +318,7 @@ button {
   background: linear-gradient(90deg, #fcb045 0%, #833ab4 100%);
   outline: none;
 }
-button:hover {
+.button:hover {
   background: linear-gradient(90deg, #fdc577, #9c58c9);
 }
 
