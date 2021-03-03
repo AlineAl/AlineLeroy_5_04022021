@@ -74,16 +74,16 @@ a {
 }
 .container-produit a {
   position: absolute;
-  background: linear-gradient(90deg, #fcb045 0%, #833ab4 100%);
+  background: #F3E8F0;
   padding: 10px;
   border-radius: 5px 0px 0px 5px;
-  color: white;
+  color: black;
   font-size: 22px;
   bottom: 182px;
   right: 0px;
 }
 .container-produit a:hover {
-  background: linear-gradient(90deg, #fdc577, #9c58c9);
+  background: #f6eff4;
 }
 .container-produit img {
   width: 100%;
@@ -310,13 +310,13 @@ footer p {
   padding: 16px;
   border-radius: 26px;
   border: 1px solid #FFFFFF;
-  color: white;
+  color: black;
   font-weight: bold;
-  background: linear-gradient(90deg, #fcb045 0%, #833ab4 100%);
+  background: #F3E8F0;
   outline: none;
 }
 .button:hover {
-  background: linear-gradient(90deg, #fdc577, #9c58c9);
+  background: #f6eff4;
 }
 
 .flex-products-form {

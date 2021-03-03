@@ -84,9 +84,9 @@ function removeProducts(value) {
     let productsStorage = localStorage.getItem('article');
     productsStorage = parseInt(productsStorage);
 
-    const remove = document.querySelector(".remove-product");
-    
-    remove.addEventListener('click', () => {
+    const remove = document.querySelectorAll(".remove-product");
+    Array.from(remove).forEach((button) => {
+       button.addEventListener('click', () => {
         const index = products.indexOf(value);
 
         if(products[index] === localStorage[index]) {
@@ -96,7 +96,9 @@ function removeProducts(value) {
         }
 
         localStorage.setItem("addProductsInBasket", JSON.stringify(products));
-    });
+    }); 
+    })
+    
        
     console.log(products)
 }

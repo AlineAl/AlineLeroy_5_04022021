@@ -64,17 +64,17 @@
 
     a {
         position: absolute;
-        background: linear-gradient(90deg, rgba(252,176,69,1) 0%, rgba(131,58,180,1) 100%);
+        background: #F3E8F0;
         padding: 10px;
         border-radius: 5px 0px 0px 5px;
-        color: white;
+        color: black;
         font-size: 22px;
         bottom: 182px;
         right: 0px;
 
 
         &:hover {
-           background: linear-gradient(90deg, lighten(rgba(252,176,69,1), 10%), lighten(rgba(131,58,180,1), 10%));
+           background: lighten(#F3E8F0, 2%);
         }
     }
 

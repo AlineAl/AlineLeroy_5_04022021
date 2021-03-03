@@ -81,10 +81,12 @@ myForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     // console.log("yo");
+    // contact (information de contact) / product (id des products en string)
+    // requête order = renvoie un order id généré
     const formData = new FormData(this);
     const params = new URLSearchParams();
 
-    fetch("http://localhost:3000/api/cameras", {
+    fetch("http://localhost:3000/api/order", {
         method: "POST",
         body: params
     })
