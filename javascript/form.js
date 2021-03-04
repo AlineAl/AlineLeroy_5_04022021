@@ -1,3 +1,10 @@
+// Récupération des données du localStorage(products)
+
+let products = [];
+let productItems = localStorage.getItem("addProductsInBasket");
+productItems = JSON.parse(productItems);
+products.push(productItems);
+
 // form valide ou invalide
 const inputUserFirst = document.querySelector(".form-user:nth-child(1) input");
 const inputUserLast = document.querySelector(".form-user:nth-child(2) input");
@@ -75,35 +82,47 @@ inputMail.addEventListener("input", (e) => {
 
 
 // Je fetch post les données utilisateurs
-const myForm = document.querySelector("#myForm");
+// contact (information de contact) / product (id des products en string)
+// requête order = renvoie un order id généré
+const userForm = document.querySelector("#my-form");
 
-myForm.addEventListener('submit', (e) => {
+userForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     // console.log("yo");
-    // contact (information de contact) / product (id des products en string)
-    // requête order = renvoie un order id généré
-    const formData = new FormData(this);
-    const params = new URLSearchParams();
+    
+    const contact = Object.fromEntries(new FormData(e.target));
+    // console.log(contact);
+    const product_id = [];
+    
+    for(let i = 0; i < products.length; i++) {
+        product_id.push(products[i][i].object._id);
+    }
 
-    fetch("http://localhost:3000/api/order", {
-        method: "POST",
-        body: params
+    // console.log(product_id);
+
+    const form = {contact, product_id};
+    // console.log(form);
+
+    fetch('http://localhost:3000/api/cameras/order', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify(form)
     })
 
     .then((response) => {
-        if(response.ok) {
-            return response.json();
-        } else {
-            return Error("Error");
-        }
+        return response.json();
     })
 
-    .then((data) => {
-        console.log(data);
+    .then(() => {
+        localStorage.setItem("contact", JSON.stringify(form));
+        console.log(form);
     })
 
     .catch(error => {
         console.log(error);
-    })
+    }) 
 })
