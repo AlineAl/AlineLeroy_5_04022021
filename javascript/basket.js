@@ -77,6 +77,8 @@ function totalPrice() {
     const cardProduct = document.querySelector(".total-product");
     cardProduct.innerText = products.length;
     // console.log(products.length)
+
+    localStorage.setItem("total", total);
 }
 totalPrice()
 

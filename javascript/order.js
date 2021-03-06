@@ -1,29 +1,18 @@
-/* fetch(`http://localhost:3000/api/cameras/order`), {
-    method: "POST",
-    headers: {
-        'Accept': 'app/json',
-        'Content-Type': 'app/json'
-    }, 
-    body: JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        address: address,
-        city: city,
-        email: email
-    })
-    .then((response) => {
-        if(response.ok) {
-            return response.json();
-        } else {
-            return Error("Error");
-        }
-    })
+// Récupération des données
+const orderId = JSON.parse(localStorage.getItem("orderId"));
+const total = JSON.parse(localStorage.getItem("total"));
 
-    .then((data) => {
-        console.log(data)
-    })
+// Affichage des données sur la page de confirmation
+const div = document.querySelector('div');
 
-    .catch(error => {
-        console.log(error);
-    })
-} */
+const pTotal = document.createElement('p');
+pTotal.setAttribute("class", "p-total-order");
+pTotal.innerText = `Nous vous remercions pour votre commande d'un total de ${total} €`;
+div.appendChild(pTotal);
+
+const pOrderId = document.createElement('p');
+pOrderId.setAttribute("class", "p-order-id");
+pOrderId.innerText = `Voici votre numéro de commande: ${orderId}`;
+div.appendChild(pOrderId);
+
+localStorage.clear();

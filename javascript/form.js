@@ -1,9 +1,9 @@
 // Récupération des données du localStorage(products)
 
-let products = [];
+let productsBasket = [];
 let productItems = localStorage.getItem("addProductsInBasket");
 productItems = JSON.parse(productItems);
-products.push(productItems);
+productsBasket.push(productItems);
 
 // form valide ou invalide
 const inputUserFirst = document.querySelector(".form-user:nth-child(1) input");
@@ -91,35 +91,47 @@ userForm.addEventListener('submit', (e) => {
 
     // console.log("yo");
     
-    const contact = Object.fromEntries(new FormData(e.target));
+    let contact = {
+        firstName: document.querySelector('#firstname').value,
+        lastName: document.querySelector('#lastname').value,
+        address: document.querySelector('#address').value,
+        city: document.querySelector('#city').value,
+        email: document.querySelector('#email').value
+    }
     // console.log(contact);
-    const product_id = [];
-    
-    for(let i = 0; i < products.length; i++) {
-        product_id.push(products[i][i].object._id);
+    let products = [];
+
+    productsBasket = productsBasket[0];
+    for(let i = 0; i < productsBasket.length; i++) {
+        products.push(productsBasket[i].object._id);  
     }
 
     // console.log(product_id);
 
-    const form = {contact, product_id};
+    const form = {contact, products};
     // console.log(form);
 
     fetch('http://localhost:3000/api/cameras/order', {
         method: 'POST',
         headers: {
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-
         body: JSON.stringify(form)
     })
 
     .then((response) => {
         return response.json();
+        
     })
 
-    .then(() => {
+    .then((data) => {
         localStorage.setItem("contact", JSON.stringify(form));
+        localStorage.setItem("orderId", JSON.stringify(data.orderId));
         console.log(form);
+        console.log(data.orderId);
+        const a = document.querySelector('a');
+        window.location.href=`./order.html?orderid=${data.orderId}`;
     })
 
     .catch(error => {
