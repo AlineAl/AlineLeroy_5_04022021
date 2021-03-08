@@ -3,13 +3,12 @@
     padding: 16px;
     border-radius: 26px;
     border: 1px solid #FFFFFF;
-    color: white;
+    color: black;
     font-weight: bold;
-    background: linear-gradient(90deg, rgba(252,176,69,1) 0%, rgba(131,58,180,1) 100%);
+    background: #F3E8F0;
     outline: none;
 
     &:hover {
-        background: linear-gradient(90deg, lighten(rgba(252,176,69,1), 10%), lighten(rgba(131,58,180,1), 10%));
+        background: lighten(#F3E8F0, 2%);
     }
 }
-

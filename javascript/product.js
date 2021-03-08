@@ -52,21 +52,6 @@ function displayOwnProduct() {
 
         function addProductInBasket() {
             let addProduct = document.querySelector(".add-product");
-
-            let productsStorage = localStorage.getItem('article');
-
-            if(productsStorage) {
-                let div = document.querySelector(".basket-products");
-
-                let pRounded = document.createElement("p");
-                pRounded.setAttribute("class", "number-products-basket");
-                let p = document.createElement("p");
-                p.setAttribute("class", "number");
-                p.innerText = productsStorage;
-
-                div.appendChild(pRounded);
-                div.appendChild(p); 
-            }
         
             addProduct.addEventListener('click', (e) => {
                 e.preventDefault();
