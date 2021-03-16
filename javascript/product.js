@@ -20,6 +20,7 @@ function displayOwnProduct() {
     })
     .then((data) => {
         // console.log(data[0].lenses[1]);
+        console.log(data)
 
         // je prends les données de l'id
         function displayInfoProduct(data) {
