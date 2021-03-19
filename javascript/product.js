@@ -113,21 +113,31 @@ function displayOwnProduct() {
             let productsdata = {
                     object: data,
                     quantity: 1
-                }
+                } 
             // condition si j'ai un élément dans le local storage
             // j'incrémente la quantité au click
             // je push l'objet dans la variable et je la set, et stringify pour définir ce que je veux avoir dans le tableau, ici les productItems
             // si non, je définis un array vide
             // je push l'objet dans le tableau, je set et stringify pour définir ce que je veux avoir dans le tableau, ici les products
-            if(productItems) {
-                productItems.push(productsdata);
+            
+            if(productItems !== null) {
+                for(let i = 0; i < productItems.length; i++) {
+                   if(productItems[i].object.name === productsdata.object.name) {
+                        productItems[i].quantity += 1;
+                    } else {
+                        productItems[i].quantity = 1;
+                        productItems.push(productsdata);
+                    }
+                }
                 localStorage.setItem("addProductsInBasket", JSON.stringify(productItems));
             } else {
                 let products = [];
                 products.push(productsdata);
-                localStorage.setItem("addProductsInBasket", JSON.stringify(products));  
+                localStorage.setItem("addProductsInBasket", JSON.stringify(products));
+                
             }
         }
+        
         // je veux que le nombre d'articles ne soit pas réinitialisé à chaque démarrage de la page  
     })
     .catch(error => {

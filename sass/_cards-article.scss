@@ -69,7 +69,7 @@
         border-radius: 5px 0px 0px 5px;
         color: black;
         font-size: 22px;
-        bottom: 182px;
+        bottom: 210px;
         right: 0px;
 
 
@@ -112,7 +112,6 @@
     align-items: center;
 }
 
-
 .dropdown {
     margin-top: 10px;
     font-size: 20px;
@@ -121,6 +120,21 @@
 
     &:hover {
         border: 1px solid #F3E8F0;
+    }
+}
+
+.input-quantity {
+    text-align: center;
+    margin-top: 10px;
+
+    .button-quantity {
+        width: 20px;
+        height: 20px;
+    }
+
+    .quantity {
+        width: 30px;
+        text-align: center;
     }
 }
 

@@ -17,11 +17,13 @@ function verifValidInput() {
     const span = document.querySelectorAll("span");
 
     inputUserFirst.addEventListener("input", (e) => {
-        if(e.target.value.length >= 3) {
+        const regexFirstName = /^[a-zA-Zàâäéèêëçùûüôö]+[-']?[a-zA-Zàâäéèêëçùûüôö]+$/;
+
+        if(e.target.value.search(regexFirstName) === 0) {
             imgVerif[0].style.display = "inline";
             imgVerif[0].src = "./images/check.png";
             span[0].style.display= "none";
-        } else {
+        } else if(e.target.value.search(regexFirstName) === -1) {
             imgVerif[0].style.display = "inline";
             imgVerif[0].src = "./images/error.png";
             span[0].style.display= "inline";
@@ -29,11 +31,13 @@ function verifValidInput() {
     })
 
     inputUserLast.addEventListener("input", (e) => {
-        if(e.target.value.length >= 3) {
+        const regexLastName = /^[a-zA-Zàâäéèêëçùûüôö]+[-']?[a-zA-Zàâäéèêëçùûüôö]+$/;
+
+        if(e.target.value.search(regexLastName) === 0) {
             imgVerif[1].style.display = "inline";
             imgVerif[1].src = "./images/check.png";
             span[1].style.display= "none";
-        } else {
+        } else if(e.target.value.search(regexLastName) === -1){
             imgVerif[1].style.display = "inline";
             imgVerif[1].src = "./images/error.png";
             span[1].style.display= "inline";
