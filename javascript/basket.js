@@ -52,9 +52,19 @@ function displayProductsBasket() {
                 inputNumber.setAttribute("min", "1");
                 divTwo.appendChild(inputNumber); */
 
+                const divThree = document.createElement('div');
+                divThree.setAttribute("class", "input-quantity");
+                divTwo.appendChild(divThree);
+
+                const input = document.createElement('input');
+                input.setAttribute("class", "quantity");
+                input.setAttribute("type", "text");
+                input.setAttribute("value", `${data.quantity}`);
+                divThree.appendChild(input);
+
                 const remove = document.createElement("i");
                 remove.setAttribute("class","fas fa-trash-alt remove-product");
-                divTwo.appendChild(remove);
+                divTwo.appendChild(remove); 
             });
         }) 
     };

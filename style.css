@@ -79,7 +79,7 @@ a {
   border-radius: 5px 0px 0px 5px;
   color: black;
   font-size: 22px;
-  bottom: 182px;
+  bottom: 210px;
   right: 0px;
 }
 .container-produit a:hover {
@@ -124,6 +124,19 @@ a {
 }
 .dropdown:hover {
   border: 1px solid #F3E8F0;
+}
+
+.input-quantity {
+  text-align: center;
+  margin-top: 10px;
+}
+.input-quantity .button-quantity {
+  width: 20px;
+  height: 20px;
+}
+.input-quantity .quantity {
+  width: 30px;
+  text-align: center;
 }
 
 h2 {
