@@ -102,7 +102,21 @@ function displayOwnProduct() {
             setItems(data);
         }
 
+        function getIndexofItem(name, lenses, products) {
+            let index = -1;
+            products.forEach((product, ind) => {
+                console.log(product, ind, name, lenses)
+                console.log(product.object.name === name)
+                console.log(product.object.lenses === lenses)
+                if(product.object.name === name && product.object.lenses === lenses) {
+                    index = ind
+                }
+            })
+            return index
+        }
+
         function setItems(data) {
+            const selectOption = document.querySelector("#products").value
             // je récupère les données dans le local storage
             let productItems = localStorage.getItem("addProductsInBasket");
             // je parse pour afficher les données
@@ -111,9 +125,15 @@ function displayOwnProduct() {
             // je défini mon objet avec les infos + quantité
             // console.log(productItems)
             let productsdata = {
-                    object: data,
-                    quantity: 1
-                } 
+                object: {
+                    lenses: "", 
+                    name: data.name, 
+                    price: data.price,
+                    description: data.description,
+                    imageUrl: data.imageUrl
+                },
+                quantity: 1
+            } 
             // condition si j'ai un élément dans le local storage
             // j'incrémente la quantité au click
             // je push l'objet dans la variable et je la set, et stringify pour définir ce que je veux avoir dans le tableau, ici les productItems
@@ -121,16 +141,28 @@ function displayOwnProduct() {
             // je push l'objet dans le tableau, je set et stringify pour définir ce que je veux avoir dans le tableau, ici les products
             
             if(productItems !== null) {
-                for(let i = 0; i < productItems.length; i++) {
-                   if(productItems[i].object.name === productsdata.object.name) {
-                        productItems[i].quantity += 1;
+                let indexItem = getIndexofItem(data.name, "", productItems)
+
+                   if(indexItem !== -1) {
+                       console.log("increment quantity")
+                        productItems[indexItem].quantity += 1;
                     } else {
-                        productItems[i].quantity = 1;
+                        productsdata = {
+                            object: {
+                                lenses: "", 
+                                name: data.name, 
+                                price: data.price,
+                                description: data.description,
+                                imageUrl: data.imageUrl
+                            },
+                            quantity: 1
+                        } 
+                        console.log("create new product")
                         productItems.push(productsdata);
                     }
-                }
                 localStorage.setItem("addProductsInBasket", JSON.stringify(productItems));
             } else {
+                console.log("instance")
                 let products = [];
                 products.push(productsdata);
                 localStorage.setItem("addProductsInBasket", JSON.stringify(products));
