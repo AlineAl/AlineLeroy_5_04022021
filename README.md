@@ -2,7 +2,7 @@
 
 ![Cover](https://github.com/AlineAl/AlineLeroy_2_17122020/blob/main/images/Aline_github.001.png)
 
-### Optimize an existing website
+### Create an e-commerce site
 
 This is a project of Openclassrooms. Create an e-commerce site.
 
