@@ -7,6 +7,7 @@ productsBasket.push(productItems);
 
 // form valide ou invalide
 function verifValidInput() {
+    const userForm = document.querySelector("#my-form");
     const inputUserFirst = document.querySelector(".form-user:nth-child(1) input");
     const inputUserLast = document.querySelector(".form-user:nth-child(2) input");
     const inputAddress = document.querySelector(".form-user:nth-child(3) input");
@@ -16,11 +17,13 @@ function verifValidInput() {
     const span = document.querySelectorAll("span");
 
     inputUserFirst.addEventListener("input", (e) => {
-        if(e.target.value.length >= 3) {
+        const regexFirstName = /^[a-zA-Zàâäéèêëçùûüôö]+[-']?[a-zA-Zàâäéèêëçùûüôö]+$/;
+
+        if(e.target.value.search(regexFirstName) === 0) {
             imgVerif[0].style.display = "inline";
             imgVerif[0].src = "./images/check.png";
             span[0].style.display= "none";
-        } else {
+        } else if(e.target.value.search(regexFirstName) === -1) {
             imgVerif[0].style.display = "inline";
             imgVerif[0].src = "./images/error.png";
             span[0].style.display= "inline";
@@ -28,11 +31,13 @@ function verifValidInput() {
     })
 
     inputUserLast.addEventListener("input", (e) => {
-        if(e.target.value.length >= 3) {
+        const regexLastName = /^[a-zA-Zàâäéèêëçùûüôö]+[-']?[a-zA-Zàâäéèêëçùûüôö]+$/;
+
+        if(e.target.value.search(regexLastName) === 0) {
             imgVerif[1].style.display = "inline";
             imgVerif[1].src = "./images/check.png";
             span[1].style.display= "none";
-        } else {
+        } else if(e.target.value.search(regexLastName) === -1){
             imgVerif[1].style.display = "inline";
             imgVerif[1].src = "./images/error.png";
             span[1].style.display= "inline";
@@ -80,6 +85,27 @@ function verifValidInput() {
             span[4].style.display= "inline";
         }
     })
+
+    userForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const regexAddress = /([0-9]*) ?([a-zA-Z,\. ]*) ?([0-9]{5}) ?([a-zA-Z]*)/;
+        const regexCity = /^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$/;
+        const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        
+        if(inputUserFirst.value.length < 3) {
+            e.preventDefault();
+        } else if(inputUserLast.value.length < 3) {
+            e.preventDefault();
+        } else if(inputAddress.value.search(regexAddress) === -1) {
+            e.preventDefault();
+        } else if(inputCity.value.search(regexCity) === -1) {
+            e.preventDefault();
+        } else if(inputMail.value.search(regexEmail) === -1) {
+            e.preventDefault();
+        } else {
+            requestPost();
+        }
+    })  
 }
 verifValidInput()
 
@@ -87,13 +113,11 @@ verifValidInput()
 // contact (information de contact) / product (id des products en string)
 // requête order = renvoie un order id généré
 function requestPost() {
-    const userForm = document.querySelector("#my-form");
+    // const userForm = document.querySelector("#my-form");
 
-    userForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    // userForm.addEventListener('submit', (e) => {
+        // e.preventDefault();
 
-        // console.log("yo");
-        
         let contact = {
             firstName: document.querySelector('#firstname').value,
             lastName: document.querySelector('#lastname').value,
@@ -101,6 +125,7 @@ function requestPost() {
             city: document.querySelector('#city').value,
             email: document.querySelector('#email').value
         }
+        
         // console.log(contact);
         let products = [];
 
@@ -139,7 +164,5 @@ function requestPost() {
         .catch(error => {
             console.log(error);
         }) 
-    })
+    // })
 }
-requestPost()
-

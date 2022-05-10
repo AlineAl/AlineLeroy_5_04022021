@@ -13,7 +13,7 @@ function appelAPI() {
 
     // je sélectionne la donnée sur l'API du navigateur
     .then((data) => {  
-        // console.log(data);
+        console.log(data);
 
     // je créé une boucle qui va itérer les données que je souhaite intégrer dans le html
         for(let i = 0; i < data.length ; i++) {
